@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"  xml:lang="en" lang="en">
+<head>
+<title>Map Kibera</title>
+  <link rel="alternate" type="application/atom+xml" title="Map Kibera Atom" href="http://friendfeed.com/mapkibera?format=atom" />
+  <link rel="stylesheet" type="text/css" href="site.css" />
+  <script src="site.js"></script>
+  <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  <script src="http://openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+</head>
+<body onload="slippymap_init();">
+<center>
+<div id="main">
+  <!-- I give up, using a table -->
+  <table id="title-table">
+    <tr>
+      <td id="title-text" class="heading">MAP KIBERA</td>
+      <td rowspan="2"><div id="map"></div></td>
+    </tr>
+    <tr>
+      <td id="title-desc">
+        <center>
+          <span id="title-caption">Kibera's first complete free and open map<br/>November 2009</span>
+        </center>  
+        <br/>
+        Kibera in Nairobi, Kenya, widely known as Africa's largest slum, remains a blank spot on the map. Without basic knowledge of the geography and resources of Kibera it is impossible to have an informed discussion on how to improve the lives of residents. This November, young Kiberans create the first public digital map of their own community.
+      </td>
+    </tr>
+  </table>
+  <span class="heading">themes</span>
+  <div id="themes" class="slice">
+  <br/>
+  <center>
+  <table id="themes-links">
+    <tr>
+      <td>Health</td>
+      <td>Security</td>
+      <td>Education</td>
+      <td>Water/Sanitation</td>
+    </tr>
+  </table>
+  </center>
+  </div>
+  <span class="heading">get involved</span> 
+  <div id="contact" class="slice">
+    <br/>
+	<center>
+    <table id="contact-links">
+      <tr>
+        <td align="center" valign="top"><a href="http://mapkibera.org/wiki/">Wiki</a><br>all our plans</td>
+        <td align="center" valign="top"><span style="font-size:25pt">Discuss</span><br><span id="smalllink">on the <a href="http://groups.google.com/group/map-kibera">Google Group</a> and <a href="http://www.facebook.com/group.php?gid=353862420432">Facebook</a></span></td>
+        <td align="center" valign="top"><a href="http://kibera.ushahidi.com/">Voice of Kibera</a><br>community media</td>
+        <td align="center" valign="top"><a href="/download/">Download</a><br>get data</td>
+        <td align="center" valign="top"><a href="kibera-email.png">Contact</a><br>great to hear from you</td>
+      </tr>
+    </table>
+	</center>
+  </div>
+  <span class="heading"><a href="http://mapkibera.org/blog/">mapkibera blog</a></span>
+  <div id="blog" class="slice">
+    <script language="JavaScript" src="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fwww.mapkibera.org%2Fblog%2F?feed=atom&amp;chan=no&amp;num=4&amp;desc=250&amp;utf=y&amp;css=blog&amp;html=y" type="text/javascript"></script>
+  </div>
+  <span class="heading"><img src="http://www.flickr.com/favicon.ico" /> <a href="http://flickr.com/photos/tags/mapkibera/">mapkibera photos</a></span>
+  <div id="flickr" class="slice">
+    <center>
+      <!-- <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=9&display=latest&size=t&layout=h&source=user&user=43405831%40N07"></script> -->
+      <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=4&display=latest&size=m&layout=h&source=all_tag&tag=mapkibera&user=15662856%40N00"></script>
+    </center>
+  </div>
+  <span class="heading"><img src="http://youtube.com/favicon.ico" /> <a href="http://www.youtube.com/user/mapkibera">Kibera News Network</a> &amp; <a href="http://www.youtube.com/user/mapkibera">mapkibera</a></span>
+  <div id="youtube" class="slice">
+   <table><tr><td>
+   <script language="JavaScript" src="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fbase%2Fusers%2Fmapkibera%2Fuploads%3Falt%3Drss%26v%3D2%26orderby%3Dpublished%26client%3Dytapi-youtube-profile&amp;num=1&amp;utf=y&amp;css=youtube&amp;html=a" type="text/javascript"></script>
+   </td><td>
+   <script language="JavaScript" src="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fbase%2Fusers%2FKiberaNewsNetwork%2Fuploads%3Falt%3Drss%26v%3D2%26orderby%3Dpublished%26client%3Dytapi-youtube-profile&amp;num=1&amp;utf=y&amp;css=youtube&amp;html=a" type="text/javascript"></script>
+   </td></tr></table>
+  </div>   
+  <span class="heading"><img src="http://twitter.com/favicon.ico" /> <a href="http://twitter.com/mapkibera/">mapkibera twitter</a></span>
+  <div id="twitter" class="slice">
+    <script language="JavaScript" src="http://feed2js.org//feed2js.php?src=http%3A%2F%2Ftwitter.com%2Fstatuses%2Fuser_timeline%2F76654826.rss&amp;chan=no&amp;num=5&amp;desc=0&amp;utf=y&amp;&amp;html=y" type="text/javascript"></script>
+  </div>
+  <span class="heading">partners</span>
+  <div id="partners" class="slice">
+    <center>
+    <a href="http://wiki.openstreetmap.org/index.php/Humanitarian_OSM_Team" alt="Humanitarian OpenStreetMap Team"><img width="50" height="50" src="http://www.openstreetmap.org/images/osm_logo.png" /></a>
+    <a href="http://www.sodnet.org/" alt="SODNET"><img src="http://www.sodnet.org/templates/ja_quartz/images/winter/logo.png" /></a> 
+<!--    <a href="http://www.facebook.com/group.php?gid=107495279735" alt="Hands on Kenya"><img width="156" height="50" src="http://profile.ak.fbcdn.net/object3/1593/96/n107495279735_3945.jpg" /></a> -->
+<!--    <a href="http://fahamu.org/" alt="Fahamu"><img width="47" height="50" src="http://www.ocwconsortium.org/media/civicrm/custom/1fahamu_af5f1fffec9463773920dcabd1c278d1.jpg" /></a> -->
+<!--    <b>PAMOJA TRUST</b> -->
+    <a href="http://upande.com/" alt="Upande"><img width="200" height="60" src="http://upande.com/templates/farn/images/Header.png" /></a>
+    <a href="http://cfk.unc.edu/" alt="Carolina for Kibera"><img width="200" height="36" src="http://cfk.unc.edu/images/logo-cfk.jpg" /></a>
+	<a href="http://kcoda.org/Images/logo%20kcoda.png" alt="Kibera Community Development Agenda"><img src="http://kcoda.org/Images/logo%20kcoda.png" height="65" width="80"></a>
+    <p/>
+<!--    supported by <a href="http://jsintl.org/" alt="JumpStart International"><img width="200" height="50" src="http://kibera.maps.jsintl.org/images/jumpstart-logo.png" /></a>
+-->
+    </center>
+  </div>
+<!--
+  <div id="download">
+  </div>
+-->  
+</div>
+</center>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15783847-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

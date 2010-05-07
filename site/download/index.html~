@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Map Kibera Data</title>
+</head>
+<body>
+<!-- Description -->
+<!-- License -->
+<!-- Update times -->
+<!-- github -->
+<h1>Shapefiles</h1>
+<ul>
+<li><a href="http://maps.jsintl.org/kibera/shapefile/transport.zip">Transport</a></li>
+<li><a href="http://maps.jsintl.org/kibera/shapefile/health-shapefile.zip">Health</a></li>
+<li><a href="http://maps.jsintl.org/kibera/shapefiles/security-shapefile.zip">Security</a></li>
+</ul>
+<h1>KML</h1>
+<ul>
+<li><a href="http://maps.jsintl.org/kibera/shapefile/kibera.kml">kibera.kml</a></li>
+</ul>
+<h1>CSV</h1>
+<ul>
+<li><a href="http://maps.jsintl.org/kibera/shapefile/health.csv">health.csv</a></li>
+</ul>
+<h1>OSM extracts</h1>
+<ul>
+<li><a href="http://maps.jsintl.org/kibera/kibera.osm">kibera.osm</a></li>
+<li><a href="http://maps.jsintl.org/kibera/kibera.health.osm">kibera.health.osm</a></li>
+<li><a href="http://maps.jsintl.org/kibera/kibera.security.osm">kibera.security.osm</a></li>
+</ul>
+<h1>Tiles</h1>
+
+<h1>Tag Report</h1>
+<ul>
+<li><a href="http://maps.jsintl.org/kibera/tags.html">Tag Report</a></li>
+</ul>
+</body>
+</html>
