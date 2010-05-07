@@ -1,0 +1,18 @@
+#
+#  Export all highway tags as roads with a name, highway type, oneway tag
+#  and max speed.
+#
+
+setup :Shp do
+    polygon :boundary do
+        name 'Boundary'
+        string :name, 100
+        string :admin_level, 4
+    end
+end
+
+ways do
+    if boundary
+        :boundary << {:name => name, :admin_level => admin_level}
+    end
+end

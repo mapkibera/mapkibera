@@ -1,0 +1,20 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :CSV do
+  file :health do
+    name "health"
+    fields :id, :name, :type, :operator, :status, :lon, :lat
+    fs "|"
+  end
+end
+
+nodes do
+    if tags['health_facility:type']
+        :health << {:id => id, :name => name, :type => tags['health_facility:type'], :operator => tags['operator:type'], :status => operational_status, :lon => lon, :lat =>lat}
+    elsif amenity
+        :health << {:id => id, :name => name, :type => amenity, :lon =>lon, :lat =>lat}
+    end
+end
+

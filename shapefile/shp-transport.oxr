@@ -1,0 +1,26 @@
+#
+#  Export all highway tags as roads with a name, highway type, oneway tag
+#  and max speed.
+#
+
+setup :Shp do
+    polyline :road do
+        name 'Road'
+        string :Name, 100
+        string :Type, 20
+    end
+    polyline :railway do
+    	name 'Railway'
+	string :Name, 100
+    end
+end
+
+ways do
+    if highway
+        :road << {:Name => name, :Type => highway}
+    end
+    if railway
+    	:railway << {:Name => name}
+    end
+end
+
