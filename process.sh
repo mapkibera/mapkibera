@@ -3,6 +3,14 @@
 # GET fresh Kibera extract from OSM
 wget http://www.openstreetmap.org/api/0.6/map?bbox=36.7709,-1.3215,36.8069,-1.3048 -O /home/mikel/kibera/kibera.osm
 
+cd /home/mikel/src/osm2pgsql; su postgres -c "/home/mikel/src/osm2pgsql/osm2pgsql -m /home/mikel/src/planet/planet.osm -P 5433 -d mapnik"
+
+#touch /var/lib/mod_tile/default/planet-import-complete
+rm -rf /var/lib/mod_tile/kibera/
+mkdir /var/lib/mod_tile/kibera/
+rm -rf /var/lib/mod_tile/kibera_health_tiles/
+mkdir /var/lib/mod_tile/kibera_health_tiles/
+
 # Load OSM into postgres, and clear tiles
 cd /home/mikel/src/osm2pgsql; su postgres -c "/home/mikel/src/osm2pgsql/osm2pgsql -m /home/mikel/kibera/kibera.osm -P 5433 -d kibera"
 rm -rf /var/lib/mod_tile/kibera/
@@ -43,3 +51,14 @@ cd /home/mikel/kibera/shapefile; rm health.csv; osmexport ./csv-pois.oxr /home/m
 
 # Convert extract to Shapefile
 cd /home/mikel/kibera/shapefile; rm security.*; osmexport ./shp-security.oxr /home/mikel/kibera/kibera.security.osm .; zip security-shapefile.zip security.*; rm security.* 
+
+#
+# SCHOOLS
+#
+
+/home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/home/mikel/kibera/kibera.osm" --node-key-value keyValueList="amenity.school,amenity.kindergarten" --tf reject-ways --tf reject-relations --write-xml file="/tmp/kibera.education.1.osm"
+/home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/home/mikel/kibera/kibera.osm" --tf accept-nodes "education:type=*" --tf reject-ways --tf reject-relations --write-xml file="/tmp/kibera.education.2.osm"
+/home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/tmp/kibera.education.1.osm" --read-xml file="/tmp/kibera.education.2.osm" --merge --write-xml file="/home/mikel/kibera/kibera.education.osm"
+
+# Convert extract to Shapefile
+cd /home/mikel/kibera/shapefile; rm education.*; osmexport ./shp-education.oxr /home/mikel/kibera/kibera.education.osm .; zip education-shapefile.zip education.*; rm education.*
