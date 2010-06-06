@@ -62,3 +62,5 @@ cd /home/mikel/kibera/shapefile; rm security.*; osmexport ./shp-security.oxr /ho
 
 # Convert extract to Shapefile
 cd /home/mikel/kibera/shapefile; rm education.*; osmexport ./shp-education.oxr /home/mikel/kibera/kibera.education.osm .; zip education-shapefile.zip education.*; rm education.*
+# Convert extract to CSV
+cd /home/mikel/kibera/shapefile; rm education.csv; osmexport ./csv-education.oxr /home/mikel/kibera/kibera.education.osm .
