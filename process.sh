@@ -25,7 +25,7 @@ mkdir /var/lib/mod_tile/kibera/
 
 # Road extract??
 cd /home/mikel/kibera/shapefile; rm Road.* Railway.*; osmexport ./shp-transport.oxr /home/mikel/kibera/kibera.osm .; zip transport.zip Road.* Railway.*; rm Road.* Railway.*
-cd /home/mikel/kibera/shapefile; rm Boundary.*;osmexport ./shp-boundary.oxr /home/mikel/kibera/kibera.osm .; zip Boundary.zip Boundary.*; rm Boundary.*
+cd /home/mikel/kibera/shapefile; rm Boundary.*;osmexport ./shp-boundary.oxr /home/mikel/kibera/kibera.osm .; zip boundary-shapefile.zip Boundary.*; rm Boundary.*
 
 #
 # HEALTH
