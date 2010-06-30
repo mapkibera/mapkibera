@@ -64,3 +64,16 @@ cd /home/mikel/kibera/shapefile; rm security.*; osmexport ./shp-security.oxr /ho
 cd /home/mikel/kibera/shapefile; rm education.*; osmexport ./shp-education.oxr /home/mikel/kibera/kibera.education.osm .; zip education-shapefile.zip education.*; rm education.*
 # Convert extract to CSV
 cd /home/mikel/kibera/shapefile; rm education.csv; osmexport ./csv-education.oxr /home/mikel/kibera/kibera.education.osm .
+
+#
+# WATSAN
+#
+
+#
+# SECURITY
+#
+
+/home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/home/mikel/kibera/kibera.osm" --node-key-value keyValueList="watsan:toilet_public.yes,watsan:toilet_private.yes,watsan:pee_point.yes,watsan:water_public.yes,watsan:water_private.yes,watsan:bathroom.yes,watsan:dumping_site.yes,watsan:recycling.yes,watsan:urban_agriculture.yes,watsan:other.yes" --tf reject-ways --tf reject-relations --write-xml file="/home/mikel/kibera/kibera.watsan.osm"
+
+# Convert extract to Shapefile
+cd /home/mikel/kibera/shapefile; rm watsan.*; osmexport ./shp-watsan.oxr /home/mikel/kibera/kibera.watsan.osm .; zip watsan-shapefile.zip watsan.*; rm watsan.* 

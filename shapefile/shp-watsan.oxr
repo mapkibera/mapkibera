@@ -1,0 +1,37 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+    point :watsan do
+        string :id, 20
+        string :watsan, 32
+        string :name, 128
+        string :status, 32
+        string :descript, 128
+    end
+end
+
+nodes do
+    if tags['watsan:toilet_public'] == "yes"
+        :watsan << {:id => id, :watsan => 'toilet_public', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}
+    elsif tags['watsan:toilet_private'] == "yes"
+        :watsan << {:id => id, :watsan => 'toilet_private', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}
+    elsif tags['watsan:pee_point'] == "yes"
+        :watsan << {:id => id, :watsan => 'pee_point', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}
+    elsif tags['watsan:water_public'] == "yes"
+        :watsan << {:id => id, :watsan => 'water_public', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}
+    elsif tags['watsan:water_private'] == "yes"
+        :watsan << {:id => id, :watsan => 'water_private', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}
+    elsif tags['watsan:bathroom'] == "yes"
+        :watsan << {:id => id, :watsan => 'bathroom', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}
+    elsif tags['watsan:dumping_site'] == "yes"
+        :watsan << {:id => id, :watsan => 'dumping_site', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}    
+    elsif tags['watsan:recycling'] == "yes"
+        :watsan << {:id => id, :watsan => 'recyling', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']} 
+    elsif tags['watsan:urban_agriculture'] == "yes"
+        :watsan << {:id => id, :watsan => 'urban_agriculture', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']} 
+    elsif tags['watsan:other'] == "yes"
+        :watsan << {:id => id, :watsan => 'other', :name => tags['name'], :descript => tags['watsan:description'], :status => tags['operational_status']}    
+    end
+end
