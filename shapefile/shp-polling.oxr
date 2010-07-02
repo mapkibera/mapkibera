@@ -1,0 +1,18 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+    point :polling do
+        string :id, 20
+        string :name, 100
+	      string :type, 32
+    end
+end
+
+nodes do
+    if tags['polling_place'] == "yes"
+        :polling << {:id => id, :name => name, :type => tags['education:type']}
+    end
+end
+
