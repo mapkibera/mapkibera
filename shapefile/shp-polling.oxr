@@ -6,13 +6,14 @@ setup :Shp do
     point :polling do
         string :id, 20
         string :name, 100
+        string :pollstat, 16
 	      string :type, 32
     end
 end
 
 nodes do
-    if tags['polling_place'] == "yes"
-        :polling << {:id => id, :name => name, :type => tags['education:type']}
+    if tags['education:type']
+        :polling << {:id => id, :name => name, :pollstat => tags['polling_station'], :type => tags['education:type']}
     end
 end
 

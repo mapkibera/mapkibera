@@ -4,23 +4,23 @@
 <Style name="points">
     <Rule>
       <MaxScaleDenominator>25000</MaxScaleDenominator>
-      <Filter>[amenity]='hospital'</Filter>
+      <Filter>[amenity]='hospital' or [health_facility:type]</Filter>
       <PointSymbolizer file= "/home/mikel/src/mapnik-rendering/symbols/hospital.p.16.png" type="png" width="16" height="16" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>25000</MaxScaleDenominator>
-      <Filter>[amenity]='pharmacy'</Filter>
+      <Filter>[amenity]='pharmacy' or [health_facility:type]='chemist_dispensing' or [health_facility:type]='chemist_over_the_counter'</Filter>
       <PointSymbolizer file= "/home/mikel/src/mapnik-rendering/symbols/pharmacy.p.16.png" type="png" width="16" height="16" />
     </Rule>
 </Style>
 <Style name="text">
     <Rule>
-      <Filter>[amenity] = 'hospital'</Filter>
+      <Filter>[amenity] = 'hospital' or [health_facility:type]</Filter>
       <MaxScaleDenominator>10000</MaxScaleDenominator>
       <TextSymbolizer name="name" face_name="DejaVu Sans Book" size="8" fill="#da0092" dy="16" halo_radius="2" wrap_width="12"/>
     </Rule>
     <Rule>
-      <Filter>[amenity] = 'pharmacy'</Filter>
+      <Filter>[amenity] = 'pharmacy' or [health_facility:type]='chemist_dispensing' or [health_facility:type]='chemist_over_the_counter'</Filter>
       <MaxScaleDenominator>10000</MaxScaleDenominator>
       <TextSymbolizer name="name" face_name="DejaVu Sans Book" size="8" fill="#da0092" dy="13" halo_radius="1" wrap_width="12"/>
     </Rule>
@@ -34,7 +34,7 @@
       <Parameter name="user">osm</Parameter>
       <Parameter name="password">osm</Parameter>
       <Parameter name="dbname">kibera</Parameter>
-      <Parameter name="table">(select * from planet_osm_point where amenity = 'hospital' or amenity = 'pharmacy' or 'health_facility:type' is NOT NULL) as amenity</Parameter>
+      <Parameter name="table">(select * from planet_osm_point where amenity = 'hospital' or amenity = 'pharmacy' or "health_facility:type" is NOT "") as amenity</Parameter>
       <Parameter name="estimate_extent">false</Parameter>
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
@@ -63,7 +63,7 @@
       <Parameter name="password">osm</Parameter>
       <Parameter name="dbname">kibera</Parameter>
       <Parameter name="table">
-      (select way,amenity,'medical_facility:type',highway,leisure,landuse,man_made,"natural",place,tourism,ele,name,ref,military,aeroway,'yes'::text as point
+      (select way,amenity,"health_facility:type",highway,leisure,landuse,man_made,"natural",place,tourism,ele,name,ref,military,aeroway,'yes'::text as point
        from planet_osm_point
        where amenity is not null
           or leisure is not null
