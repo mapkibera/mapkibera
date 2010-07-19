@@ -19,4 +19,9 @@ cd /home/mikel/mtelgon/shapefile; rm Boundary.*;osmexport ./shp-boundary.oxr /ho
 /home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/home/mikel/mtelgon/mtelgon.osm" --tf accept-nodes "education:type=*" --tf reject-ways --tf reject-relations --write-xml file="/home/mikel/mtelgon/mtelgon.polling.osm"
 
 # Convert extract to Shapefile
-cd /home/mikel/mtelgon/shapefile; rm polling.*; osmexport ./shp-polling.oxr /home/mikel/mtelgon/mtelgon.polling.osm .; zip polling-shapefile.zip polling.*; rm polling.* 
+cd /home/mikel/mtelgon/shapefile; rm polling_custom.*; osmexport ./shp-polling-custom.oxr /home/mikel/mtelgon/mtelgon.polling.osm .; zip polling-shapefile-custom.zip polling_custom.*; rm polling_custom.* 
+
+cd /home/mikel/mtelgon/shapefile; rm polling.*; osmexport ./shp-polling.oxr /home/mikel/mtelgon/mtelgon.polling.osm .; zip polling-shapefile.zip polling.*; rm polling.*
+
+cd /home/mikel/mtelgon/shapefile; rm polling.csv; osmexport ./csv-polling.oxr /home/mikel/mtelgon/mtelgon.polling.osm .
+

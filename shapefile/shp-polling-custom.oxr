@@ -1,0 +1,32 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+    point :polling_custom do
+        string :id, 16
+        string :name, 128
+        string :alt_name, 128
+        string :pollstat, 16
+        string :pollid, 16
+        string :pollnum, 16
+        string :constit, 64
+	      string :type, 32
+	      string :desc, 128
+	      string :elec, 16
+	      string :toilet, 8
+	      string :zain, 8
+	      string :safari, 8
+	      string :foot, 8
+	      string :moto, 8
+	      string :fourwd, 8
+	      string :vehicle, 8
+	      string :maxspd, 8
+    end
+end
+
+nodes do
+    if tags['education:type']
+        :polling_custom << {:id => id, :name => name, :alt_name => alt_name, :pollstat => tags['polling_station'], :pollid => tags['polling_station:id'], :pollnum => tags['polling_station:number'], :constit => tags['constituency'], :type => tags['education:type'], :desc => tags['education:description'], :elec => tags['operational_status:electricity'], :toilet => tags['watsan:toilet_public'], :zain => tags['mobile:zain'], :safari => tags['mobile:safaricom'], :foot => tags['practicability:foot'], :moto => tags['practicability:motorbike'], :fourwd => tags['practicability:4wd'], :vehicle => tags['practicability:motor_vehicle'], :maxspd => tags['maxspeed']}
+    end
+end
