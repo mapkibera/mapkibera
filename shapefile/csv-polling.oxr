@@ -1,0 +1,30 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :CSV do
+  file :polling do
+    name "polling"
+     fields :ukey, :x, :y, :name, :quality, :source, :encrypt, :type, :year_2002, :year_2005, :year_2007, :year_2010, :alt_name, :poll_id
+    fs "|"
+  end
+end
+
+:polling <<  {:ukey => 'ukey', :x => 'x', :y => 'y', :name => 'name', :quality => 'quality', :source => 'source', :encrypt => 'encrypt', :type => 'type', :year_2002 => 'year_2002', :year_2005 => 'year_2005', :year_2007 => 'year_2007', :year_2010 => 'year_2010', :alt_name => 'alt_name', :poll_id => 'poll_id'}
+
+nodes do
+    if tags['education:type']
+        if tags['polling_station'] == 'yes'
+          year_2010 = 'true'
+        else
+          year_2010 = 'false'
+        end 
+        if tags['education:type'] == 'other'
+          type = 'Other'
+        else
+          type = 'School'
+        end   
+        :polling << {:x => lon, :y => lat, :name => name, :quality => "4", :source => 'GPS  Collected', :encrypt => 'Unmasked', :type => type, :year_2010 => year_2010, :alt_name => alt_name, :poll_id => tags['polling_station:id']}
+    end
+end
+
