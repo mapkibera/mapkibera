@@ -77,3 +77,9 @@ cd /home/mikel/kibera/shapefile; rm education.csv; osmexport ./csv-education.oxr
 
 # Convert extract to Shapefile
 cd /home/mikel/kibera/shapefile; rm watsan.*; osmexport ./shp-watsan.oxr /home/mikel/kibera/kibera.watsan.osm .; zip watsan-shapefile.zip watsan.*; rm watsan.* 
+
+#
+# IMAGE
+#
+
+cd /home/mikel/kibera/; ./mkmap.pl > kibera.png
