@@ -40,6 +40,9 @@ function slippymap_init() {
   lonLat = new OpenLayers.LonLat(lon, lat).transform( epsg4326, map.getProjectionObject());
   map.setCenter (lonLat, zoom);
         	
+  scalebar = new OpenLayers.Control.ScaleBar();
+  map.addControl(scalebar);
+
   //var resetButton = new OpenLayers.Control.Button({title: "Reset view", displayClass: "resetButton", trigger: slippymap_resetPosition}); 	
   //var panel = new OpenLayers.Control.Panel( { displayClass: "buttonsPanel"}); 
   
@@ -47,4 +50,6 @@ function slippymap_init() {
   var panel = new OpenLayers.Control.Panel( { displayClass: "buttonsPanel"}); 	
   panel.addControls([openmapButton]); 	
   map.addControl(panel); 
+
+
 }
