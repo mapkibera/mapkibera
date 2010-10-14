@@ -45,10 +45,11 @@ node	     capital      text         linear
 node,way   construction text         linear
 node,way   cutting      text         linear
 node,way   disused      text         linear
+node,way   education:type	text	polygon
 node       ele          text         linear
 node,way   embankment   text         linear
 node,way   foot         text         linear
-node	health_facility:type	text	linear
+node,way   health_facility:type	text	polygon
 node,way   highway      text         linear
 node,way   historic     text         polygon
 node,way   horse        text         linear
