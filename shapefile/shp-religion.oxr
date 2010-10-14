@@ -1,0 +1,19 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+  point :religion do
+    string :id, 20
+    string :name, 100
+	  string :religion, 32
+	  string :denom, 32
+  end
+end
+
+nodes do
+    if tags['amenity'] == "place_of_worship"
+        :religion << {:id => id, :name => tags['name'], :religion => tags['religion'], :denom => tags['denomination']}
+    end
+end
+

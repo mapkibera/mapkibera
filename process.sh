@@ -69,14 +69,23 @@ cd /home/mikel/kibera/shapefile; rm education.csv; osmexport ./csv-education.oxr
 # WATSAN
 #
 
+/home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/home/mikel/kibera/kibera.osm" --node-key-value keyValueList="watsan:toilet_public.yes,watsan:toilet_private.yes,watsan:pee_point.yes,watsan:water_public.yes,watsan:water_private.yes,watsan:bathroom.yes,watsan:dumping_site.yes,watsan:recycling.yes,watsan:urban_agriculture.yes,watsan:other.yes,amenity.toilets,amenity.drinking_water,amenity.recycling,man_made.water_tower,natural.water" --tf reject-ways --tf reject-relations --write-xml file="/home/mikel/kibera/kibera.watsan.osm"
+
+# Convert extract to Shapefile
+cd /home/mikel/kibera/shapefile; rm watsan.*; osmexport ./shp-watsan.oxr /home/mikel/kibera/kibera.watsan.osm .; zip watsan-shapefile.zip watsan.*; rm watsan.* 
+
 #
 # SECURITY
 #
 
-/home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/home/mikel/kibera/kibera.osm" --node-key-value keyValueList="watsan:toilet_public.yes,watsan:toilet_private.yes,watsan:pee_point.yes,watsan:water_public.yes,watsan:water_private.yes,watsan:bathroom.yes,watsan:dumping_site.yes,watsan:recycling.yes,watsan:urban_agriculture.yes,watsan:other.yes" --tf reject-ways --tf reject-relations --write-xml file="/home/mikel/kibera/kibera.watsan.osm"
+#
+# RELIGION
+#
+
+/home/mikel/src/osmosis-0.34/bin/osmosis --read-xml file="/home/mikel/kibera/kibera.osm" --node-key-value keyValueList="amenity.place_of_worship" --tf reject-ways --tf reject-relations --write-xml file="/home/mikel/kibera/kibera.religion.osm"
 
 # Convert extract to Shapefile
-cd /home/mikel/kibera/shapefile; rm watsan.*; osmexport ./shp-watsan.oxr /home/mikel/kibera/kibera.watsan.osm .; zip watsan-shapefile.zip watsan.*; rm watsan.* 
+cd /home/mikel/kibera/shapefile; rm religion.*; osmexport ./shp-religion.oxr /home/mikel/kibera/kibera.religion.osm .; zip religion-shapefile.zip religion.*; rm religion.* 
 
 #
 # IMAGE
