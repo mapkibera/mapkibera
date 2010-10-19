@@ -1,0 +1,291 @@
+#
+#  A more complex example of a KML export
+#
+
+setup :KML do
+    name 'OpenStreetMap'
+    description 'Created from OSM data with Osmexport'
+
+    folder :POI do
+        description 'Points of Interest'
+        folder :Parking do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/shapes/parking_lot.png', :scale => 0.7)
+            end
+        end
+        folder :Fuel do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal2/icon21.png')
+            end
+        end
+        folder :Cinema do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal2/icon30.png')
+            end
+        end
+        folder :Hotel do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal2/icon28.png')
+            end
+        end
+        folder :Restaurant do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal2/icon40.png')
+            end
+        end
+        folder :Water do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal2/icon40.png')
+            end
+        end
+        folder :Hospital do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal3/icon38.png')
+            end
+        end
+        folder :Church do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal2/icon3.png')
+            end
+        end
+        folder :School do
+            style do
+                icon(:href => 'http://maps.google.com/mapfiles/kml/pal2/icon2.png')
+            end
+        end        
+    end
+    folder :Waterways do
+        folder :Waterway_River do
+            style do
+                line(:color => '#a0ea8b17', :width => 8)
+            end
+        end
+        folder :Waterway_Stream do
+            style do
+                line(:color => '#a0ea8b17', :width => 4)
+            end
+        end
+        folder :Waterway_Canal do
+            style do
+                line(:color => '#a0ea8b17', :width => 4)
+            end
+        end
+        folder :Waterway_Drain do
+            style do
+                line(:color => '#a0ea8b17', :width => 2)
+            end
+        end
+    end
+    folder :Railways do
+        folder :Railway_Rail_Casing do
+            style do
+                line(:color => '#80ffffff', :width => 6)
+            end
+        end
+        folder :Railway_Rail_Core do
+            style do
+                line(:color => '#ff000000', :width => 4)
+            end
+        end
+        folder :Railway_Lightrail do
+            style do
+                line(:color => '#ff000000', :width => 4)
+            end
+        end
+        folder :Railway_Tram do
+            style do
+                line(:color => '#ff000000', :width => 2)
+            end
+        end
+    end
+    folder :Roads do
+        folder :Core do
+            folder :Motorway do
+                style do
+                    line(:color => '#ffbf3333', :width => 6)
+                end
+            end
+            folder :Motorway_Link do
+                style do
+                    line(:color => '#ffbf3333', :width => 3)
+                end
+            end
+            folder :Trunk do
+                style do
+                    line(:color => '#ff17cfea', :width => 6)
+                end
+            end
+            folder :Trunk_Link do
+                style do
+                   line(:color => '#ff17cfea', :width => 3)
+                end
+            end
+            folder :Primary do
+                style do
+                    line(:color => '#ff17cfea', :width => 4)
+                end
+            end
+            folder :Primary_Link do
+                style do
+                    line(:color => '#ff17cfea', :width => 2)
+                end
+            end
+            folder :Secondary do
+                style do
+                    line(:color => '#ff17e8ea', :width => 4)
+                end
+            end
+            folder :Unclassified do
+                style do
+                    line(:color => '#ffd0d0d0', :width => 3)
+                end
+            end
+            folder :Pedestrian do
+                style do
+                    line(:color => '#ff808080', :width => 3)
+                end
+            end
+            folder :Service do
+                style do
+                    line(:color => '#ffd0d0d0', :width => 2)
+                end
+            end
+        end
+        folder :Casings do
+            folder :Motorway_Casing do
+                style do
+                    line(:color => '#ff000000', :width => 7)
+                end
+            end
+            folder :Motorway_Link_Casing do
+                style do
+                    line(:color => '#ff000000', :width => 4)
+                end
+            end
+            folder :Trunk_Casing do
+                style do
+                    line(:color => '#ff000000', :width => 7)
+                end
+            end
+            folder :Trunk_Link_Casing do
+                style do
+                    line(:color => '#ff000000', :width => 4)
+                end
+            end
+        end
+    end
+end
+
+nodes do
+    if amenity == 'parking'
+        :Parking << { :name => name }
+    end
+    if amenity == 'fuel'
+        :Fuel << { :name => name }
+    end
+    if amenity == 'cinema'
+        :Cinema << { :name => name }
+    end
+    if tourism == 'hotel'
+        :Hotel << { :name => name }
+    end
+    if amenity == 'restaurant'
+        :Restaurant << { :name => name }
+    end
+    if amenity == 'drinking_water'
+        :Water << { :name => name }
+    end
+    if man_made == 'water_tower'
+        :Water << { :name => name }
+    end
+    if amenity == 'hospital'
+        :Hospital << { :name => name }
+    end
+    if amenity == 'place_of_worship' and religion == "christian"
+        :Church << { :name => name }
+    end
+    if amenity == 'school'
+        :School << { :name => name }
+    end    
+end
+
+ways do
+    def nameref
+        if name && ref
+            "#{name} (#{ref})"
+        elsif name
+            name
+        elsif ref
+            ref
+        else
+            nil
+        end
+    end
+
+    if waterway == 'river'
+        :Waterway_River << { :name => name }
+    end
+    if waterway == 'stream'
+        :Waterway_Stream << { :name => name }
+    end
+    if waterway == 'canal'
+        :Waterway_Canal << { :name => name }
+    end
+    if waterway == 'drain'
+        :Waterway_Drain << { :name => name }
+    end
+
+    if railway == 'rail'
+        :Railway_Rail_Casing << { :height => 0 }
+        :Railway_Rail_Core << { :height => 3 }
+    end
+    if railway == 'light_rail'
+        :Railway_Lightrail << { :height => 3 }
+    end
+    if railway == 'tram'
+        :Railway_Tram << { :height => 3 }
+    end
+
+    if highway == 'motorway'
+        :Motorway_Casing << { :height => 0 }
+        :Motorway << { :name => nameref, :height => 2 }
+    end
+    if highway == 'motorway_link'
+        :Motorway_Link_Casing << { :height => 0 }
+        :Motorway_Link << { :height => 1 }
+    end
+    if highway == 'trunk'
+        :Trunk_Casing << { :height => 0 }
+        :Trunk <<  { :name => nameref, :height => 2 }
+    end
+    if highway == 'trunk_link'
+        :Trunk_Link_Casing << { :height => 0 }
+        :Trunk_Link << { :height => 1 }
+    end
+
+    if highway == 'primary'
+        :Primary << { :name => nameref, :height => 2 }
+    end
+    if highway == 'primary_link'
+        :Primary_Link << { :height => 1 }
+    end
+    if highway == 'secondary'
+        :Secondary << { :name => nameref, :height => 1 }
+    end
+    if highway == 'unclassified' || highway == 'residential' || highway == 'tertiary'
+        :Unclassified << { :name => name, :height => 1 }
+    end
+    if highway == 'pedestrian'
+        :Pedestrian << { :name => name, :height => 1 }
+    end
+    if highway == 'track'
+        :Pedestrian << { :name => name, :height => 1 }
+    end
+    if highway == 'footway'
+        :Pedestrian << { :name => name, :height => 1 }
+    end
+    if highway == 'service'
+        :Service << { :name => name, :height => 1 }
+    end
+end
+
