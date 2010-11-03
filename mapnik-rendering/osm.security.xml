@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map [
+<!ENTITY % entities SYSTEM "inc/entities.xml.inc">
+<!ENTITY % icons SYSTEM "inc/icons.xml.inc">
+%entities;
+%icons;
+]>
+<Map bgcolor="transparent" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+    &fontset-settings;
+<Datasource name="kibera_postgis">
+    &datasource-settings;
+</Datasource>
+<Style name="points">
+
+    <Rule>
+      &maxscale_zoom14;
+      <ElseFilter />
+      <PointSymbolizer file="&default_security;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+</Style>
+<Style name="text">
+    <Rule>
+      &maxscale_zoom14;
+      <ElseFilter />
+      <TextSymbolizer name="name" dy="7" fontset_name="book-fonts" size="9" fill="#000033" halo_radius="1" wrap_width="14" allow_overlap="true" />
+    </Rule>
+</Style>
+<Layer name="security" status="on">
+    <StyleName>points</StyleName>
+    <Datasource base="kibera_postgis">
+        <Parameter name="table">
+            (select * 
+            from planet_osm_point 
+            where 
+                ("security:bar" is NOT NULL AND "security:bar"='yes') OR
+                ("security:black_spot" is NOT NULL AND "security:black_spot"='yes') OR
+                ("security:chiefs_camp" is NOT NULL AND "security:chiefs_camp"='yes') OR
+                ("security:gbv_support" is NOT NULL AND "security:gbv_support"='yes') OR
+                ("security:hatari_spot" is NOT NULL AND "security:hatari_spot"='yes') OR
+                ("security:light" is NOT NULL AND "security:light"='yes') OR
+                ("security:other" is NOT NULL AND "security:other"='yes') OR
+                ("security:safe_space" is NOT NULL AND "security:safe_space"='yes')
+           )
+           as security</Parameter>
+    </Datasource>
+</Layer>
+<Layer name="security-text" status="on">
+    <StyleName>text</StyleName>
+    <Datasource base="kibera_postgis">
+        <Parameter name="table">
+            (select way,amenity,ele,name,ref,'yes'::text as point
+            from planet_osm_point
+            where 
+                ("security:bar" is NOT NULL AND "security:bar"='yes') OR
+                ("security:black_spot" is NOT NULL AND "security:black_spot"='yes') OR
+                ("security:chiefs_camp" is NOT NULL AND "security:chiefs_camp"='yes') OR
+                ("security:gbv_support" is NOT NULL AND "security:gbv_support"='yes') OR
+                ("security:hatari_spot" is NOT NULL AND "security:hatari_spot"='yes') OR
+                ("security:light" is NOT NULL AND "security:light"='yes') OR
+                ("security:other" is NOT NULL AND "security:other"='yes') OR
+                ("security:safe_space" is NOT NULL AND "security:safe_space"='yes')
+           )
+           as text
+      </Parameter>
+    </Datasource>
+</Layer>
+</Map>
+
+
