@@ -14,8 +14,77 @@
 
     <Rule>
       &maxscale_zoom14;
-      <ElseFilter />
+      <Filter>[education:type]='kindergarten'</Filter>
       <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='nursery'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='primary'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='secondary'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='technical'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='adult'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='tailoring'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='computer'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='driving'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='catering'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='hairdressing'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='language'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+      &maxscale_zoom14;
+      <Filter>[education:type]='other'</Filter>
+      <PointSymbolizer file="&default_school;" type="png" width="16" height="16" allow_overlap="true" />
+    </Rule>
+    <Rule>
+        <!-- 
+        Many features (1 in 4) will match the ElseFilter currently since multiple education levels can appear in the same feature. Use regex .match('') with 
+        highest level of education first?
+        -->
+      &maxscale_zoom14;
+      <ElseFilter />
+      <PointSymbolizer file="&default_health;" type="png" width="16" height="16" allow_overlap="true" />
     </Rule>
 </Style>
 <Style name="text">

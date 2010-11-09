@@ -81,6 +81,7 @@ node,way   security:chiefs_camp      text         linear
 node,way   security:gbv_support      text         linear
 node,way   security:hatari_spot      text         linear
 node,way   security:light      text         linear
+node,way   security:light_type      text         linear
 node,way   security:other      text         linear
 node,way   security:safe_space      text         linear
 node,way   service      text         linear
@@ -103,4 +104,5 @@ node,way   watsan:toilet_public      text         linear
 node,way   watsan:urban_agriculture      text         linear 
 node,way   watsan:water_private      text         linear 
 node,way   watsan:water_public      text         linear 
+node,way   watsan:other      text         linear 
 way        way_area     real                # This is calculated during import
