@@ -15,12 +15,12 @@
     <!-- Re-using some icons from OSM's mapnik config. -->
     <Rule>
       &maxscale_zoom14;
-      <Filter>[amenity]='hospital' or [health_facility:type]</Filter>
+      <Filter>[amenity]='hospital' or [health_facility:type]='hospital'</Filter>
       <PointSymbolizer file="&hospital;" type="png" width="16" height="16" />
     </Rule>
     <Rule>
       &maxscale_zoom14;
-      <Filter>[amenity]='pharmacy' or [health_facility:type]='chemist_dispensing'</Filter>
+      <Filter>[health_facility:type]='chemist_dispensing'</Filter>
       <PointSymbolizer file="&pharmacy;" type="png" width="16" height="16" />
     </Rule>
     <Rule>
