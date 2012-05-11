@@ -1,0 +1,17 @@
+#
+#
+
+setup :Shp do
+    polyline :waterway do
+        name 'waterway'
+        string :name, 100
+        string :type, 20
+    end
+end
+
+ways do
+    if waterway
+        :waterway << {:name => name, :type => waterway}
+    end
+end
+

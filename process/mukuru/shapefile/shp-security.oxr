@@ -1,0 +1,34 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+    point :security do
+        string :id, 20
+        string :security, 32
+        string :name, 128
+        string :status, 32
+        string :descript, 128
+        string :light_type, 32
+    end
+end
+
+nodes do
+    if tags['security:light']
+        :security << {:id => id, :security => 'light', :name => tags['name'], :descript => tags['security:description'], :status => tags['operational_status'], :light_type => tags['security:light_type']}
+    elsif tags['security:bar'] or tags['amenity'] == 'bar' or tags['amenity'] == 'pub' or tags['shop'] == 'alcohol'
+        :security << {:id => id, :security => 'bar', :name => tags['name'], :descript => tags['security:description'] }
+    elsif tags['security:hatari_spot']
+        :security << {:id => id, :security => 'hatari_spot', :name => tags['name'], :descript => tags['security:description']}
+    elsif tags['security:black_spot']
+        :security << {:id => id, :security => 'black_spot', :name => tags['name'], :descript => tags['security:description']}
+    elsif tags['security:other']
+        :security << {:id => id, :security => 'other', :name => tags['name'], :descript => tags['security:description']}
+    elsif tags['security:gbv_support']
+        :security << {:id => id, :security => 'gbv_support', :name => tags['name'], :descript => tags['security:description']}
+    elsif tags['security:chiefs_camp']
+        :security << {:id => id, :security => 'chiefs_camp', :name => tags['name'], :descript => tags['security:description']}
+    elsif tags['amenity'] == 'police'
+        :security << {:id => id, :security => 'police', :name => tags['name'], :descript => tags['security:description']}        
+    end
+end

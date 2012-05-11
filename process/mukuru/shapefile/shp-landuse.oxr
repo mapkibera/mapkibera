@@ -1,0 +1,23 @@
+#
+#
+
+setup :Shp do
+    polygon :landuse do
+        name 'landuse'
+        string :name, 100
+        string :landuse, 16
+    end
+end
+
+ways do
+    begin
+      if landuse and landuse != "residential"
+          :landuse << {:name => name, :landuse => landuse}
+      elsif leisure == "pitch"
+          :landuse << {:name => name, :landuse => "pitch"}    
+      end
+    rescue Exception=>e
+      puts id
+      puts e
+    end  
+end

@@ -1,0 +1,22 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+    point :health do
+        string :id, 20
+        string :name, 100
+	string :type, 32
+	string :operator, 32
+	string :status, 32
+    end
+end
+
+nodes do
+    if tags['health_facility:type']
+        :health << {:id => id, :name => name, :type => tags['health_facility:type'], :operator => tags['operator:type'], :status => operational_status}
+    elsif amenity
+        :health << {:id => id, :name => name, :type => amenity}
+    end
+end
+

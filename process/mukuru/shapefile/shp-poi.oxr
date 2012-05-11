@@ -1,0 +1,24 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+    point :poi do
+      string :id, 20
+      string :name, 100
+	    string :type, 32
+    end
+end
+
+nodes do
+    if shop
+        :poi << {:id => id, :name => name, :type => shop}
+    elsif amenity == "buereau_de_change" or amenity == "cinema" or amenity == "public_building"    
+        :poi << {:id => id, :name => name, :type => amenity}
+    elsif man_made == "tower" && tags['tower:type'] == "communication"
+        :poi << {:id => id, :name => name, :type => "tower_comm"}
+    elsif landuse == "industrial"
+        :poi << {:id => id, :name => name, :type => landuse}        
+    end
+end
+

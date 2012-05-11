@@ -1,0 +1,20 @@
+#
+#  Export some POIs of different types.
+#
+
+setup :Shp do
+    point :education do
+        string :id, 20
+        string :name, 100
+	      string :type, 32
+    end
+end
+
+nodes do
+    if tags['education:type']
+        :education << {:id => id, :name => name, :type => tags['education:type']}
+    elsif amenity
+        :education << {:id => id, :name => name, :type => amenity}
+    end
+end
+
